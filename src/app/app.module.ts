@@ -67,6 +67,8 @@ registerLocaleData(localeEs);
 export class AppModule {
   constructor() {
     console.log('AppModule loaded.');
+    console.log('PRUEBA');
+
     console.log(environment.API_URL);
   }
 }
