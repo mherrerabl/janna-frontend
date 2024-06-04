@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
+import { environment } from '../../environments/environment.development';
 import { CategoriesModule } from '../categories/categories.module';
 import { SharedModule } from '../shared/shared.module';
 import { TreatmentDetailComponent } from './components/treatment-detail/treatment-detail.component';
@@ -18,4 +19,9 @@ import { TreatmentsRoutingModule } from './treatments-routing.module';
   exports: [TreatmentDetailComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class TreatmentsModule {}
+export class TreatmentsModule {
+  constructor() {
+    console.log('TreatmentsModule loaded.');
+    console.log(environment.API_URL);
+  }
+}
