@@ -12,6 +12,7 @@ export class UserClass {
   phone: number | null;
   type: TypeUser;
   token: string;
+  _token?: any;
 
   constructor(
     id: string,

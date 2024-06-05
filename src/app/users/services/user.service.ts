@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable, catchError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
-import { AppState } from '../../app.reducers';
 import { deleteResponse } from '../../shared/models/deleteResponse.dto';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { SharedService } from '../../shared/services/shared.service';
 import { UserClass } from '../models/user';
 import { UserDTO } from '../models/user.dto';
@@ -17,12 +14,7 @@ export class UserService {
   private urlApi: string;
   private controller: string;
 
-  constructor(
-    private http: HttpClient,
-    private sharedService: SharedService,
-    private localService: LocalStorageService,
-    private store: Store<AppState>
-  ) {
+  constructor(private http: HttpClient, private sharedService: SharedService) {
     this.controller = 'user';
     this.urlApi = environment.API_URL + '/api/' + this.controller;
   }
@@ -40,12 +32,16 @@ export class UserService {
   }
 
   getUserLogin(user: UserDTO): Observable<UserClass> {
+    user._token = '{{ csrf_token() }}';
+
     return this.http
       .post<UserClass>(this.urlApi + '/login', user)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   createUser(user: UserClass): Observable<UserClass> {
+    user._token = '{{ csrf_token() }}';
+
     return this.http
       .post<UserClass>(this.urlApi + '/', user)
       .pipe(catchError(this.sharedService.handleError));
