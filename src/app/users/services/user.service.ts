@@ -43,7 +43,7 @@ export class UserService {
     user._token = '{{ csrf_token() }}';
 
     return this.http
-      .post<UserClass>(this.urlApi + '/', user)
+      .post<UserClass>(this.urlApi, user)
       .pipe(catchError(this.sharedService.handleError));
   }
 
