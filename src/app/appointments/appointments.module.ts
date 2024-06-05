@@ -26,4 +26,8 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     }),
   ],
 })
-export class AppointmentsModule {}
+export class AppointmentsModule {
+  constructor() {
+    console.log('AppointmentsModule loaded.');
+  }
+}

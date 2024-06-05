@@ -17,4 +17,8 @@ import { UsersRoutingModule } from './users-routing.module';
   ],
   exports: [RegisterComponent, LoginComponent],
 })
-export class UsersModule {}
+export class UsersModule {
+  constructor() {
+    console.log('UserModule loaded.');
+  }
+}

@@ -10,4 +10,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
   imports: [CommonModule, CategoriesRoutingModule, SharedModule],
   exports: [CategoriesComponent],
 })
-export class CategoriesModule {}
+export class CategoriesModule {
+  constructor() {
+    console.log('CategoriesModule loaded.');
+  }
+}

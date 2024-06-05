@@ -32,13 +32,13 @@ export class OrderService {
 
   createOrder(order: OrderClass): Observable<OrderClass> {
     return this.http
-      .post<OrderClass>(this.urlApi + '/', order)
+      .post<OrderClass>(this.urlApi, order)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   updateOrder(orderId: string, order: OrderClass): Observable<OrderClass> {
     return this.http
-      .put<OrderClass>(this.urlApi + '/' + orderId, order)
+      .put<OrderClass>(this.urlApi + orderId, order)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -53,7 +53,7 @@ export class OrderService {
 
   deleteOrder(orderId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + orderId)
+      .delete<deleteResponse>(this.urlApi + orderId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

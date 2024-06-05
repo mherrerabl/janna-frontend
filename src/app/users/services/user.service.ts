@@ -27,7 +27,7 @@ export class UserService {
 
   getUserById(userId: string): Observable<UserClass> {
     return this.http
-      .get<UserClass>(this.urlApi + '/' + userId)
+      .get<UserClass>(this.urlApi + userId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -38,9 +38,6 @@ export class UserService {
   }
 
   createUser(user: UserClass): Observable<UserClass> {
-    user._token = '{{ csrf_token() }}';
-    console.log(this.urlApi);
-
     return this.http
       .post<UserClass>(this.urlApi, user)
       .pipe(catchError(this.sharedService.handleError));
@@ -48,13 +45,13 @@ export class UserService {
 
   updateUser(userId: string, user: UserClass): Observable<UserClass> {
     return this.http
-      .put<UserClass>(this.urlApi + '/' + userId, user)
+      .put<UserClass>(this.urlApi + userId, user)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deleteUser(userId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + userId)
+      .delete<deleteResponse>(this.urlApi + userId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

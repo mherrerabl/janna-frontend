@@ -9,4 +9,8 @@ import { ContactComponent } from './components/contact/contact.component';
   imports: [CommonModule, SharedModule, ReactiveFormsModule],
   exports: [ContactComponent],
 })
-export class MailModule {}
+export class MailModule {
+  constructor() {
+    console.log('MailModule loaded.');
+  }
+}

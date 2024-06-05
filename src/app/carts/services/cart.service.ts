@@ -27,7 +27,7 @@ export class CartService {
 
   getCartById(cartId: string): Observable<CartClass> {
     return this.http
-      .get<CartClass>(this.urlApi + '/' + cartId)
+      .get<CartClass>(this.urlApi + cartId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -39,13 +39,13 @@ export class CartService {
 
   createCart(cart: CartClass): Observable<CartClass> {
     return this.http
-      .post<CartClass>(this.urlApi + '/', cart)
+      .post<CartClass>(this.urlApi, cart)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   updateCart(cartId: string, cart: CartClass): Observable<CartClass> {
     return this.http
-      .put<CartClass>(this.urlApi + '/' + cartId, cart)
+      .put<CartClass>(this.urlApi + cartId, cart)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -81,7 +81,7 @@ export class CartService {
 
   deleteCart(cartId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + cartId)
+      .delete<deleteResponse>(this.urlApi + cartId)
       .pipe(catchError(this.sharedService.handleError));
   }
 

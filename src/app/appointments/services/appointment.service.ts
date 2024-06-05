@@ -32,7 +32,7 @@ export class AppointmentService {
 
   getAppointmentById(appointmentId: string): Observable<AppointmentClass> {
     return this.http
-      .get<AppointmentClass>(this.urlApi + '/' + appointmentId)
+      .get<AppointmentClass>(this.urlApi + appointmentId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -40,7 +40,7 @@ export class AppointmentService {
     appointment: AppointmentClass
   ): Observable<AppointmentClass> {
     return this.http
-      .post<AppointmentClass>(this.urlApi + '/', appointment)
+      .post<AppointmentClass>(this.urlApi, appointment)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -49,13 +49,13 @@ export class AppointmentService {
     appointment: AppointmentClass
   ): Observable<AppointmentClass> {
     return this.http
-      .put<AppointmentClass>(this.urlApi + '/' + appointmentId, appointment)
+      .put<AppointmentClass>(this.urlApi + appointmentId, appointment)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deleteAppointment(appointmentId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + appointmentId)
+      .delete<deleteResponse>(this.urlApi + appointmentId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

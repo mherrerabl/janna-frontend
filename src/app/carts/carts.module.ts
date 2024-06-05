@@ -7,4 +7,8 @@ import { CartsRoutingModule } from './carts-routing.module';
   declarations: [],
   imports: [CommonModule, CartsRoutingModule],
 })
-export class CartsModule {}
+export class CartsModule {
+  constructor() {
+    console.log('CartModule loaded.');
+  }
+}

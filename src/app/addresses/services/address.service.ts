@@ -26,7 +26,7 @@ export class AddressService {
 
   getAddressById(addressId: string): Observable<AddressClass> {
     return this.http
-      .get<AddressClass>(this.urlApi + '/' + addressId)
+      .get<AddressClass>(this.urlApi + addressId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -38,7 +38,7 @@ export class AddressService {
 
   createAddress(address: AddressClass): Observable<AddressClass> {
     return this.http
-      .post<AddressClass>(this.urlApi + '/', address)
+      .post<AddressClass>(this.urlApi, address)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -47,13 +47,13 @@ export class AddressService {
     address: AddressClass
   ): Observable<AddressClass> {
     return this.http
-      .put<AddressClass>(this.urlApi + '/' + addressId, address)
+      .put<AddressClass>(this.urlApi + addressId, address)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deleteAddress(addressId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + addressId)
+      .delete<deleteResponse>(this.urlApi + addressId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

@@ -34,7 +34,7 @@ export class UserTreatmentService {
     userTreatment: UserTreatmentClass
   ): Observable<UserTreatmentClass> {
     return this.http
-      .post<UserTreatmentClass>(this.urlApi + '/', userTreatment)
+      .post<UserTreatmentClass>(this.urlApi, userTreatment)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -43,16 +43,13 @@ export class UserTreatmentService {
     userTreatment: UserTreatmentClass
   ): Observable<UserTreatmentClass> {
     return this.http
-      .put<UserTreatmentClass>(
-        this.urlApi + '/' + userTreatmentId,
-        userTreatment
-      )
+      .put<UserTreatmentClass>(this.urlApi + userTreatmentId, userTreatment)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deleteUserTreatment(userTreatmentId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + userTreatmentId)
+      .delete<deleteResponse>(this.urlApi + userTreatmentId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

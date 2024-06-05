@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -11,10 +11,7 @@ import { AppComponent } from './app.component';
 
 import localeEs from '@angular/common/locales/es';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {
-  ServiceWorkerModule,
-  provideServiceWorker,
-} from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -57,10 +54,10 @@ registerLocaleData(localeEs);
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideServiceWorker('ngsw-worker.js', {
+    /*provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
-    }),
+    }),*/
   ],
   bootstrap: [AppComponent],
 })

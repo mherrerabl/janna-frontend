@@ -57,7 +57,7 @@ export class CategoryService {
 
   createCategory(category: CategoryClass): Observable<CategoryClass> {
     return this.http
-      .post<CategoryClass>(this.urlApi + '/', category)
+      .post<CategoryClass>(this.urlApi, category)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -66,13 +66,13 @@ export class CategoryService {
     category: CategoryClass
   ): Observable<CategoryClass> {
     return this.http
-      .put<CategoryClass>(this.urlApi + '/' + categoryId, category)
+      .put<CategoryClass>(this.urlApi + categoryId, category)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deleteCategory(categoryId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + categoryId)
+      .delete<deleteResponse>(this.urlApi + categoryId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }
