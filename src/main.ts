@@ -6,7 +6,6 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { enableProdMode, isDevMode } from '@angular/core';
 import { register as registerSwiperElement } from 'swiper/element/bundle';
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment.development';
 
 registerSwiperElement();
 
@@ -18,8 +17,8 @@ provideHttpClient(withFetch());
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(() => {
-    if ('serviceWorker' in navigator && environment.production) {
+    /*if ('serviceWorker' in navigator && environment.production) {
       navigator.serviceWorker.register('ngsw-worker.js');
-    }
+    }*/
   })
   .catch((err) => console.error(err));
