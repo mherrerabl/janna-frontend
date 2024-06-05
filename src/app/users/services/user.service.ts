@@ -32,8 +32,6 @@ export class UserService {
   }
 
   getUserLogin(user: UserDTO): Observable<UserClass> {
-    user._token = '{{ csrf_token() }}';
-
     return this.http
       .post<UserClass>(this.urlApi + '/login', user)
       .pipe(catchError(this.sharedService.handleError));
@@ -41,6 +39,7 @@ export class UserService {
 
   createUser(user: UserClass): Observable<UserClass> {
     user._token = '{{ csrf_token() }}';
+    console.log(this.urlApi);
 
     return this.http
       .post<UserClass>(this.urlApi, user)
