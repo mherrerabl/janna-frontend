@@ -94,8 +94,6 @@ export class CategoryEffects {
       exhaustMap(({ department }) =>
         this.categoryService.getCategoriesByDepartment(department).pipe(
           map((categories) => {
-            console.log(categories);
-
             this.store.dispatch(isLoading({ status: false }));
             return CategoryActions.getCategoriesByDepartmentSuccess({
               categories: categories,
