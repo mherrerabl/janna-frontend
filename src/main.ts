@@ -18,10 +18,10 @@ provideHttpClient(withFetch());
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(() => {
-    if ('serviceWorker' in navigator && environment.production) {
+    /*if ('serviceWorker' in navigator && environment.production) {
       navigator.serviceWorker.register(
         '../dist/frontend/browser/ngsw-worker.js'
       );
-    }
+    }*/
   })
   .catch((err) => console.error(err));
