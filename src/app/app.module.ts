@@ -48,7 +48,7 @@ registerLocaleData(localeEs);
     }),
 
     NgbModule,
-    ServiceWorkerModule.register('nngsw-worker.js', {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
     }),
@@ -59,5 +59,6 @@ registerLocaleData(localeEs);
 export class AppModule {
   constructor() {
     console.log('AppModule loaded.');
+    console.log(!isDevMode());
   }
 }
