@@ -68,7 +68,7 @@ export class ProductService {
 
   getProductById(productId: string): Observable<ProductClass> {
     return this.http
-      .get<ProductClass>(this.urlApi + productId)
+      .get<ProductClass>(this.urlApi + '/' + productId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
