@@ -15,6 +15,7 @@ import { CartClass } from '../../../carts/models/cart';
 import { ProductCartClass } from '../../../carts/models/product-cart';
 import { InputDTO } from '../../../shared/models/input.dto';
 import { ShipmentDTO } from '../../../shared/models/shipment.dto';
+import { ModalService } from '../../../shared/services/modal.service';
 import { isLoading } from '../../../spinner/actions/spinner.actions';
 import { TypeUser, UserClass } from '../../../users/models/user';
 
@@ -58,8 +59,11 @@ export class ShipmentsComponent {
   addressPredetermined: string | null = null;
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private modalService: ModalService
   ) {
+    this.modalService.closeCart();
+
     this.user = new UserClass('', '', '', '', '', null, TypeUser['user'], '');
     this.addresses = new Array<AddressClass>();
     this.address = new AddressClass(

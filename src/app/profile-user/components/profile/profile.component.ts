@@ -5,7 +5,14 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { BreadcrumbDTO } from '../../../shared/models/breadcrumb.dto';
 import { DropdownDTO } from '../../../shared/models/dropdown.dto';
@@ -34,13 +41,24 @@ export class ProfileComponent implements OnInit {
   iconBars = faBars;
   dropdownExpanded: boolean = false;
 
-  constructor() {
+  innerWidth!: number;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.title = '';
 
     this.dataDropdown = this.getData();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.innerWidth = window.innerWidth;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+  }
 
   receiveBreadcrumb(breadcrumb: BreadcrumbDTO): void {
     setTimeout(() => {

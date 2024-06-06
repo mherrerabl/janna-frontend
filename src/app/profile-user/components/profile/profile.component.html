@@ -2,14 +2,14 @@
 
 
 <div class="mb-separator-50">
-    <div class="flex justify-between p-4 transition-colors" [class.bg-primary]="dropdownExpanded">
+    <div class="flex justify-between p-4 transition-colors" [class.bg-primary]="dropdownExpanded  && innerWidth < 768">
         <h1>{{title}}</h1>
         <button class="button-icon icon-m mr-3 lg:hidden" (click)="dropdownExpanded = !dropdownExpanded">
             <fa-icon [icon]="iconBars"></fa-icon>
         </button>
     </div>
     
-    <div class="overflow-hidden">
+    <div class="overflow-hidden lg:hidden">
         <div class="flex flex-col" [@detailExpand]="dropdownExpanded ? 'expanded' : 'collapsed'">
             <nav class="bg-primary">
                 <ul class="">

@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
 
   iconBars = faBars;
 
+  countProducts = 0;
+
   showSearcher: boolean = false;
 
   search: FormControl;
@@ -62,6 +64,8 @@ export class HeaderComponent implements OnInit {
         this.isLogin = false;
       }
     });
+
+    this.storeCart();
   }
 
   ngOnInit(): void {
@@ -78,6 +82,14 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
+  }
+
+  private storeCart(): void {
+    this.store.select('carts').subscribe((store) => {
+      if (store.cart.products_cart) {
+        this.countProducts = store.cart.products_cart.length;
+      }
+    });
   }
 
   keyPressed(value: string): void {

@@ -49,7 +49,6 @@ const routes: Routes = [
     path: 'checkout',
     loadChildren: () =>
       import('./checkout/checkout.module').then((mod) => mod.CheckoutModule),
-    canActivate: [LoginGuard],
   },
   {
     path: 'area-legal',
