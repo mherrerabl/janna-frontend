@@ -12,6 +12,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../app.reducers';
+import { isLoading } from '../../../spinner/actions/spinner.actions';
 import * as UserAction from '../../../users/actions';
 import { InputDTO } from '../../models/input.dto';
 import { LocalStorageService } from '../../services/local-storage.service';
@@ -128,5 +129,8 @@ export class HeaderComponent implements OnInit {
     this.localService.removeUser();
 
     this.store.dispatch(UserAction.logout());
+    this.store.dispatch(isLoading({ status: true }));
+
+    this.router.navigate(['']);
   }
 }
