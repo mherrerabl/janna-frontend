@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import * as L from 'leaflet';
+//import * as L from 'leaflet';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -13,8 +13,9 @@ export class LocationComponent {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       import('leaflet').then((L) => {
-        this.initMap(L);
+        //this.initMap(L);
       });
+      this.initMap(L);
     }
   }
 
