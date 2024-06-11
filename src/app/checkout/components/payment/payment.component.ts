@@ -1,11 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  Inject,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducers';
 import { CartClass } from '../../../carts/models/cart';
@@ -21,8 +15,6 @@ export class PaymentComponent implements OnInit {
   cart: CartClass;
   addressId: string | null;
   stripeCheckout: any;
-
-  @ViewChild('checkout') checkoutForm!: ElementRef;
 
   constructor(
     private checkoutService: CheckoutService,
