@@ -115,4 +115,8 @@ export class CartComponent implements OnInit {
   closeCart(): void {
     this.modalService.closeCart();
   }
+
+  openLogin(): void {
+    this.modalService.openLogin();
+  }
 }
